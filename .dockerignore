@@ -1,0 +1,28 @@
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+
+# Git
+.git/
+.gitignore
+
+# Tests (optional for runtime image)
+tests/
+
+# OS / editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Docker
+Dockerfile
+README.md

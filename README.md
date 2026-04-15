@@ -36,8 +36,200 @@ If you have any questions on the below exercise, please do get in touch and we�
 - Package the web server API into a docker container that listens for requests on port `8080`. You do not need to publish the resulting container image in any container registry, but we are expecting the Dockerfile in the submission.
 - The solution may optionally provide other functionality (e.g. pagination, caching) but the above **must** be implemented.
 
-Best of luck,  
-Equal Experts
 __________________________________________
 [^1]: For example Go, Python or Ruby but not Bash or Powershell.  
 [^2]: https://docs.github.com/en/rest/gists/gists?apiVersion=2022-11-28
+
+
+
+# GitHub Gists API
+
+A minimal HTTP API that returns publicly available GitHub Gists for a given user.
+
+---
+
+## 🚀 Overview
+
+This service exposes a single endpoint: **GET /{username}**
+
+It fetches public gists for the given GitHub user using the GitHub REST API.
+
+Example: **GET /octocat**
+
+---
+## 🚀 Features
+
+* Fetch public gists for any GitHub user
+* Clean REST API using FastAPI
+* Automated test using Pytest
+* Dockerized application
+* Runs securely as a non-root user
+
+---
+
+## 📦 Project Structure
+
+```
+.
+├── app/
+│   ├── main.py        # API routes
+│   ├── github.py      # GitHub API integration
+├── tests/
+│   ├── test_api.py    # Automated tests
+├── requirements.txt
+├── Dockerfile         # Multi-stage build (non-root user)
+├── .dockerignore      # Excludes unnecessary files from image
+```
+
+
+---
+
+## ⚙️ Prerequisites
+
+* Python 3.11+
+* pip
+* Docker (optional, for containerized run)
+
+---
+
+## 🧰 Requirements
+
+Only **one** of the following is required:
+
+* Docker (recommended)
+  **OR**
+* Python 3.11+
+
+No global system configuration changes are required.
+
+---
+
+## ▶️ Running Locally (Without Docker)
+
+### 1. Clone the repository
+
+```
+git clone <repo-url>
+cd equal-experts-adept-practical-authentic-intelligence-4d3bc322cc2d
+```
+
+### 2. Install dependencies
+
+```
+pip install -r requirements.txt
+```
+
+### 3. Start the server
+
+```
+uvicorn app.main:app --host 0.0.0.0 --port 8080 --reload
+```
+
+### 4. Access API
+
+```
+http://localhost:8080/octocat
+```
+
+---
+
+## 🧪 Running Tests
+
+```
+pytest
+
+This includes a test using the sample GitHub user:
+
+octocat
+```
+
+---
+
+## 🐳 Run with Docker (Recommended)
+
+### 1. Build the image
+
+```
+docker build -t github-gists-api .
+```
+
+### 2. Run the container
+
+```
+docker run -p 8080:8080 github-gists-api
+```
+
+### 3. Access API
+
+```
+http://localhost:8080/octocat
+```
+
+---
+
+## 🔐 Security
+
+* The container runs as a **non-root user (`appuser`)**
+* Minimizes security risks in containerized environments
+
+---
+
+## 📌 API Endpoint
+
+### GET /{username}
+
+Fetch public gists for a GitHub user.
+
+#### Example:
+
+```
+GET /octocat
+```
+
+#### Response:
+
+```
+{
+  "user": "octocat",
+  "gists": [
+    {
+      "id": "123",
+      "description": "Example gist",
+      "url": "https://gist.github.com/...",
+      "files": ["file1.txt"]
+    }
+  ]
+}
+```
+---
+
+## 🔐 Notes
+
+* The Docker container runs as a non-root user
+* No external services or dependencies are required
+* The solution is intentionally minimal and easy to run
+
+---
+
+## ⚡ Improvements (Future Scope)
+
+* Add pagination support
+* Add caching (Redis)
+* Add GitHub API authentication (token)
+* Add rate limiting & retries
+* CI/CD pipeline integration
+
+---
+
+## 📚 Reference
+
+* GitHub Gists API:
+  https://docs.github.com/en/rest/gists/gists?apiVersion=2022-11-28
+
+---
+
+## 👨‍💻 Author
+
+Ajay Makode
+
+---
