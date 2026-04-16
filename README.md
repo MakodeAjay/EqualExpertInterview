@@ -234,6 +234,6 @@ GET /octocat?page=1&per_page=5
 
 ## 👨‍💻 Author
 
-Ajay Makode
+Ajay
 
 ---
