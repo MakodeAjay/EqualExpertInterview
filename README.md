@@ -231,9 +231,3 @@ GET /octocat?page=1&per_page=5
   https://docs.github.com/en/rest/gists/gists?apiVersion=2022-11-28
 
 ---
-
-## 👨‍💻 Author
-
-Ajay
-
----
