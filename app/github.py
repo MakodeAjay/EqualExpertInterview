@@ -2,23 +2,26 @@ import requests
 
 GITHUB_URL = "https://api.github.com"
 
-
-def fetch_gists(username: str):
+def fetch_gists(username: str, page: int = 1, per_page: int = 10):
     """
-    Fetch public gists for a given GitHub user.
+    Fetch public gists for a given GitHub user with pagination.
 
     Args:
         username (str): GitHub username
+        page (int): Page number
+        per_page (int): Results per page
 
     Returns:
-        list: List of gists with selected fields (id, description, url, files)
-
-    Raises:
-        Exception: If GitHub API request fails
+        list: List of gists
     """
     url = f"{GITHUB_URL}/users/{username}/gists"
 
-    response = requests.get(url)
+    params = {
+        "page": page,
+        "per_page": per_page
+    }
+
+    response = requests.get(url, params=params)
 
     if response.status_code != 200:
         raise Exception(f"GitHub API failed with status: {response.status_code}")

@@ -37,9 +37,11 @@ If you have any questions on the below exercise, please do get in touch and we�
 - The solution may optionally provide other functionality (e.g. pagination, caching) but the above **must** be implemented.
 
 __________________________________________
+
 [^1]: For example Go, Python or Ruby but not Bash or Powershell.  
 [^2]: https://docs.github.com/en/rest/gists/gists?apiVersion=2022-11-28
 
+_____________________________________________________________________________
 
 
 # GitHub Gists API
@@ -84,14 +86,6 @@ Example: **GET /octocat**
 
 ---
 
-## ⚙️ Prerequisites
-
-* Python 3.11+
-* pip
-* Docker (optional, for containerized run)
-
----
-
 ## 🧰 Requirements
 
 Only **one** of the following is required:
@@ -133,14 +127,11 @@ http://localhost:8080/octocat
 
 ---
 
-## 🧪 Running Tests
+## 🧪 Running Tests (Docker Recommended)
 
 ```
-pytest
+docker run --rm github-gists-api pytest
 
-This includes a test using the sample GitHub user:
-
-octocat
 ```
 
 ---
@@ -211,9 +202,22 @@ GET /octocat
 
 ---
 
+## 🔧 Optional Features
+
+### Pagination
+
+The API supports pagination using query parameters:
+
+```id="t5x9kd"
+GET /octocat?page=1&per_page=5
+```
+
+* `page` → Page number (default: 1)
+* `per_page` → Number of gists per page (default: 10)̌
+
+---
 ## ⚡ Improvements (Future Scope)
 
-* Add pagination support
 * Add caching (Redis)
 * Add GitHub API authentication (token)
 * Add rate limiting & retries

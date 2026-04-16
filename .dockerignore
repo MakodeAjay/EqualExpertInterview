@@ -12,9 +12,6 @@ venv/
 .git/
 .gitignore
 
-# Tests (optional for runtime image)
-tests/
-
 # OS / editor files
 .DS_Store
 .vscode/

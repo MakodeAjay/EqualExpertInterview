@@ -22,6 +22,12 @@ COPY --from=builder /install /usr/local
 # Copy app code
 COPY app ./app
 
+# Copy test code
+COPY tests ./tests
+
+# Add python path
+ENV PYTHONPATH=/app
+
 # Set ownership
 RUN chown -R appuser:appgroup /app
 
