@@ -1,5 +1,6 @@
 import requests
 
+# Base URL for GitHub API
 GITHUB_URL = "https://api.github.com"
 
 def fetch_gists(username: str, page: int = 1, per_page: int = 10):
