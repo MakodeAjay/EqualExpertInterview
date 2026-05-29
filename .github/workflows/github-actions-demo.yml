@@ -7,9 +7,9 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v6
-      - name: building the code
+      - name: Installing dependencies
         run: |
-          python -m build
+          pip install -r requirements.txt
       - name: Run unit test
         run: |
           pytest
