@@ -1,0 +1,22 @@
+name: GitHub Actions Demo
+run-name: buildproject
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v6
+      - name: building the code
+        run: |
+          python -m build
+      - name: Run unit test
+        run: |
+          pytest
+      - name: depoly code
+        run: |
+          docker build -t github-gists-api .
+          # kubectl create deployment nginx-server --image=nginx
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
